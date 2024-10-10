@@ -42,9 +42,9 @@ public class HomeworkServlet1 extends HttpServlet {
             }
         }
 
-        for (int i = 0; i < numVertices; i++) {
-            int edge1 = rand.nextInt(numEdges);
-            int edge2 = rand.nextInt(numEdges);
+        for (int i = 0; i < numEdges; i++) {
+            int edge1 = rand.nextInt(numVertices);
+            int edge2 = rand.nextInt(numVertices);
 
             if (edge1 == edge2 || adjacencyMatrix[edge1][edge2] == 1) {
                 i --;
