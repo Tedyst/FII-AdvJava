@@ -1,0 +1,17 @@
+<context-param>
+    <param-name>prelude</param-name>
+    <param-value>prelude-var</param-value>
+</context-param>
+<context-param>
+    <param-name>coda</param-name>
+    <param-value>coda-var</param-value>
+</context-param>
+
+<filter>
+    <filter-name>HCaptchaFilter</filter-name>
+    <filter-class>ro.tedyst.lab2.HCaptchaFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>HCaptchaFilter</filter-name>
+    <url-pattern>/file-upload</url-pattern>
+</filter-mapping>
