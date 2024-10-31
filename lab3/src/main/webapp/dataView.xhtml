@@ -1,0 +1,24 @@
+<!-- dataView.xhtml -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="page.xhtml">
+
+   <ui:define name="content">
+      <h:panelGroup>
+         <h:outputText value="Data View" style="font-size: 20px;"/>
+         <!-- Example data table -->
+         <h:dataTable value="#{genericBean.allData}" var="data">
+            <h:column>
+               <f:facet name="header">ID</f:facet>
+               #{data.id}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Name</f:facet>
+               #{data.name}
+            </h:column>
+         </h:dataTable>
+      </h:panelGroup>
+   </ui:define>
+
+</ui:composition>

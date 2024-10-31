@@ -10,29 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91b44676-44c1-47c7-88ba-9cfc0da45aa2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../lab2/.idea/runConfigurations/lab2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/src/main/webapp/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/bean/ClientBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/bean/LocaleBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/bean/ProductBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/model/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/repository/ClientDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/repository/ProductDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ro.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/home.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/viewClients.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/viewProducts.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2/src/main/webapp/viewProducts.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/src/main/webapp/viewProducts.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/bean/GenericBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/model/GenericData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/tedyst/lab3/repository/GenericDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/dataEdit.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/dataView.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/footer.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/header.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lastModifiedInfo.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/menu.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/page.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +38,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -76,26 +64,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Payara Server.Payara 6.18.1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/tedy/Git/FII-AdvJava/lab3/src/main/resources/META-INF",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Payara Server.Payara 6.18.1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/tedy/Git/FII-AdvJava/lab3/src/main/resources/META-INF&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp" />
@@ -191,7 +179,8 @@
       <option name="presentableId" value="Default" />
       <updated>1729412664389</updated>
       <workItem from="1729412665338" duration="4274000" />
-      <workItem from="1730009626579" duration="10327000" />
+      <workItem from="1730009626579" duration="13071000" />
+      <workItem from="1730354460383" duration="1841000" />
     </task>
     <servers />
   </component>
