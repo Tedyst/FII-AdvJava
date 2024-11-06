@@ -1,15 +1,15 @@
 package ro.tedyst.lab3.model;
 
 import jakarta.enterprise.inject.Model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Product.findAll", query = "select p from Product p")
+})
 public class Product {
     @Id
     @GeneratedValue

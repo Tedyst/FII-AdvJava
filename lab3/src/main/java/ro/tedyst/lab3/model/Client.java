@@ -1,12 +1,11 @@
 package ro.tedyst.lab3.model;
 
-import jakarta.enterprise.inject.Model;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "User.findAll", query = "select c from Client c")
+})
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

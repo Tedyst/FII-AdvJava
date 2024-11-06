@@ -4,6 +4,7 @@ import jakarta.enterprise.inject.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import ro.tedyst.lab3.model.Client;
 import ro.tedyst.lab3.model.Product;
 import ro.tedyst.lab3.model.Product;
 
@@ -15,7 +16,7 @@ public class ProductDAO {
     private EntityManager entityManager;
 
     public List<Product> getAllProducts() {
-        return entityManager.createQuery("SELECT c FROM Product c", Product.class).getResultList();
+        return entityManager.createNamedQuery("Product.findAll", Product.class).getResultList();
     }
 
     public Product getProductById(int id) {
