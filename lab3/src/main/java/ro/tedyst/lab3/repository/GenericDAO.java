@@ -1,5 +1,6 @@
 package ro.tedyst.lab3.repository;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.inject.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -8,7 +9,7 @@ import ro.tedyst.lab3.model.GenericData;
 
 import java.util.List;
 
-@Model
+@Stateless
 public class GenericDAO {
     @PersistenceContext
     private EntityManager entityManager;

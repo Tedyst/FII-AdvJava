@@ -1,5 +1,6 @@
 package ro.tedyst.lab3.repository;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.inject.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NamedQueries;
@@ -11,7 +12,7 @@ import ro.tedyst.lab3.model.Product;
 
 import java.util.List;
 
-@Model
+@Stateless
 public class ClientDAO {
     @PersistenceContext
     private EntityManager entityManager;

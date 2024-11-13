@@ -19,6 +19,14 @@
             <p:column headerText="Name">
                 <h:outputText value="#{product.name}"/>
             </p:column>
+            <p:column headerText="Stock">
+                <h:outputText value="#{product.stock}"/>
+            </p:column>
+            <p:column headerText="Order Qty">
+                <h:outputText value="#{orderBean.getProductOrder(product)}" />
+                <p:commandButton value="Add" icon="pi pi-pencil" actionListener="#{orderBean.increaseProductOrder(product)}" update=":productListForm"/>
+                <p:commandButton value="Remove" icon="pi pi-pencil" actionListener="#{orderBean.decreaseProductOrder(product)}" update=":productListForm"/>
+            </p:column>
             <p:column headerText="Actions">
                 <p:commandButton value="Edit" icon="pi pi-pencil" actionListener="#{productBean.setSelectedProduct(product)}"
                                  oncomplete="PF('productDialog').show()" update=":productForm"/>
@@ -35,12 +43,30 @@
                          oncomplete="PF('productDialog').show()" update=":productForm" immediate="true"/>
     </h:form>
 
+    <p:commandButton value="Add Order" icon="pi pi-pencil" actionListener="#{orderBean.register()}" update=":productListForm :orderListForm"/>
+
+    <h:form id="orderListForm">
+        <p:dataTable value="#{allOrdersBean.ordersArray}" var="o">
+            <p:column headerText="Order">
+                <h:outputText value="#{o.order}"/>
+            </p:column>
+            <p:column headerText="Product">
+                <h:outputText value="#{o.product.name}"/>
+            </p:column>
+            <p:column headerText="Quantity">
+                <h:outputText value="#{o.quantity}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
     <!-- Dialog for Adding/Editing a Product -->
     <p:dialog header="Product Details" widgetVar="productDialog" modal="true" resizable="false" width="400px">
         <h:form id="productForm">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputLabel for="name" value="Name:"/>
                 <p:inputText id="name" value="#{productBean.selectedProduct.name}" required="true" label="Name"/>
+                <h:outputLabel for="stock" value="Stock:"/>
+                <p:inputText id="stock" value="#{productBean.selectedProduct.stock}" required="true" label="Stock"/>
             </h:panelGrid>
 
             <!-- Save and Cancel Buttons -->

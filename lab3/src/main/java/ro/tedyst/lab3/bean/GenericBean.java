@@ -1,5 +1,6 @@
 package ro.tedyst.lab3.bean;
 
+import jakarta.ejb.EJB;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -12,7 +13,7 @@ import java.util.List;
 @Named
 @ViewScoped
 public class GenericBean implements Serializable {
-    @Inject
+    @EJB
     private GenericDAO genericDAO;
 
     private GenericData currentData = new GenericData();

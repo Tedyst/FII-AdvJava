@@ -15,6 +15,8 @@ public class Product {
     @GeneratedValue
     private int id;
 
+    private int stock;
+
     private String name;
 
     public int getId() {
@@ -27,5 +29,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getStock() {
+        return stock;
     }
 }
