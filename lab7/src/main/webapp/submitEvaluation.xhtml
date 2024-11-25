@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Activity" />
+                <p:selectOneMenu value="#{submissionBean.submission.activity}">
+                    <f:selectItems value="#{submissionBean.activities}" var="activity"
+                                   itemLabel="#{activity.name}" itemValue="#{activity}" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Type" />
+                <p:selectOneMenu value="#{submissionBean.submission.submissionType}">
+                    <f:selectItem itemLabel="Course" itemValue="COURSE" />
+                    <f:selectItem itemLabel="Laboratory" itemValue="LABORATORY" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Grade" />
+                <p:inputNumber value="#{submissionBean.submission.grade}" minValue="1" maxValue="10" />
+                <p:outputLabel value="Comment" />
+                <p:inputTextarea value="#{submissionBean.submission.comment}" />
+            </p:panelGrid>
+            <p:commandButton value="Submit" action="#{submissionBean.submit}" />
+        </h:form>
+    </ui:define>
+</ui:composition>
