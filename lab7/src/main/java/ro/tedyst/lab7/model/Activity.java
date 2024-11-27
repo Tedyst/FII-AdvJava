@@ -1,9 +1,6 @@
 package ro.tedyst.lab7.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -11,9 +8,10 @@ import java.util.Date;
 @Entity
 public class Activity {
     @Id
+    @GeneratedValue
     private long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     private MyUser teacher;
 
@@ -60,5 +58,16 @@ public class Activity {
 
     public void setStartDate(@NotNull Date startDate) {
         this.startDate = startDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", teacher=" + teacher +
+                ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }

@@ -26,6 +26,7 @@ public class SubmissionBean implements Serializable {
     private EntityManager em;
 
     @Any
+    @Inject
     private Event<Submission> submissionsEvent;
 
     @Inject
@@ -35,19 +36,19 @@ public class SubmissionBean implements Serializable {
     @Inject
     private AuthBean authBean;
 
-    private List<Activity> activities;
-    private Submission submission = new Submission();
-    private Date rangeStart;
-    private Date rangeEnd;
+    private Long activityId;
 
-    public void loadActivities() {
-        activities = em.createQuery("select a from Activity a", Activity.class).getResultList();
-    }
+    private Submission submission = new Submission();
 
     @Transactional
     public String submit() {
+        System.out.println(submission);
         submission.setCreatedAt(new Date());
         submission.setRegistrationNumber(registrationNumber);
+        submission.setUser(authBean.getCurrentMyUser());
+        Activity a = em.createQuery("select a from Activity a WHERE a.id = :ID", Activity.class).setParameter("ID", activityId).getSingleResult();
+        submission.setActivity(a);
+        System.out.println(submission);
         em.persist(submission);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluation submitted successfully"));
         submissionsEvent.fire(submission);
@@ -58,28 +59,12 @@ public class SubmissionBean implements Serializable {
         return submission;
     }
 
-    public Date getRangeEnd() {
-        return rangeEnd;
-    }
-
-    public Date getRangeStart() {
-        return rangeStart;
-    }
-
     public List<Activity> getActivities() {
-        return activities;
+        return em.createQuery("select a from Activity a", Activity.class).getResultList();
     }
 
     public void setSubmission(Submission submission) {
         this.submission = submission;
-    }
-
-    public void setRangeEnd(Date rangeEnd) {
-        this.rangeEnd = rangeEnd;
-    }
-
-    public void setRangeStart(Date rangeStart) {
-        this.rangeStart = rangeStart;
     }
 
     public List<Submission> getEvaluations() {
@@ -90,5 +75,13 @@ public class SubmissionBean implements Serializable {
         } else {
             return em.createQuery("SELECT s FROM Submission s where s.myUser = :USER", Submission.class).setParameter("USER", authBean.getCurrentMyUser()).getResultList();
         }
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+
+    public Long getActivityId() {
+        return activityId;
     }
 }

@@ -10,6 +10,7 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import ro.tedyst.lab7.model.Activity;
 import ro.tedyst.lab7.model.MyUser;
 
@@ -24,20 +25,27 @@ public class ActivityBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
 
+    @Inject
+    private AuthBean authBean;
+
+    @Transactional
     public void addActivity() {
         System.out.println("addActivity" + newActivity + " " + newActivity.getTeacher());
+        newActivity.setTeacher(authBean.getCurrentMyUser());
         try {
             em.persist(newActivity);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Activity added successfully!", null));
             newActivity = new Activity(); // Reset form
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error adding activity: " + e.getMessage(), null));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error adding activity: " + e.toString(), null));
         }
     }
 
-    public void deleteActivity(Activity activity) {
+    @Transactional
+    public void deleteActivity(Long activityId) {
         try {
-            em.remove(em.merge(activity));
+            Activity a = em.find(Activity.class, activityId);
+            em.remove(a);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Activity deleted successfully!", null));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error deleting activity: " + e.getMessage(), null));
@@ -45,7 +53,12 @@ public class ActivityBean implements Serializable {
     }
 
     public List<Activity> getActivities() {
-        return em.createQuery("select a from Activity a", Activity.class).getResultList();
+        if (authBean.getCurrentMyUser() == null) return null;
+        if (authBean.getCurrentMyUser().getUserType() == MyUser.UserType.ADMIN)
+            return em.createQuery("select a from Activity a", Activity.class).getResultList();
+        if(authBean.getCurrentMyUser().getUserType() == MyUser.UserType.TEACHER)
+            return em.createQuery("select a from Activity a WHERE a.teacher = :TEACHER", Activity.class).setParameter("TEACHER", authBean.getCurrentMyUser()).getResultList();
+        return null;
     }
 
     public List<MyUser> getTeachers() {

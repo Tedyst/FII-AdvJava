@@ -2,9 +2,7 @@ package ro.tedyst.lab7.model;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -13,6 +11,7 @@ public class MyUser {
     @GeneratedValue
     private long id;
 
+    @Column(unique=true)
     private String name;
     private String passwordHash;
 
@@ -52,5 +51,15 @@ public class MyUser {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    @Override
+    public String toString() {
+        return "MyUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", userType=" + userType +
+                '}';
     }
 }

@@ -1,9 +1,6 @@
 package ro.tedyst.lab7.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -13,19 +10,16 @@ import java.util.Date;
 @Entity
 public class Submission {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Activity activity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     private MyUser myUser;
 
-    public enum SubmissionType {
-        COURSE,
-        LABORATORY
-    };
     @NotNull
     private SubmissionType submissionType;
 
@@ -105,5 +99,19 @@ public class Submission {
 
     public void setRegistrationNumber(@NotNull String registrationNumber) {
         this.registrationNumber = registrationNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Submission{" +
+                "id=" + id +
+                ", activity=" + activity +
+                ", myUser=" + myUser +
+                ", submissionType=" + submissionType +
+                ", grade=" + grade +
+                ", comment='" + comment + '\'' +
+                ", createdAt=" + createdAt +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                '}';
     }
 }

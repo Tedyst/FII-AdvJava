@@ -1,11 +1,10 @@
-package ro.tedyst.lab7.beans;
+package ro.tedyst.lab7.converters;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import ro.tedyst.lab7.model.MyUser;

@@ -30,12 +30,8 @@
                              action="viewEvaluations.xhtml?faces-redirect=true" />
 
             <p:menuitem value="Manage Activities"
-                             rendered="#{authBean.currentMyUser.userType == 'ADMIN'}"
+                             rendered="#{authBean.currentMyUser.userType == 'ADMIN' || authBean.currentMyUser.userType == 'TEACHER' }"
                              action="manageActivities.xhtml?faces-redirect=true" />
-
-            <p:menuitem value="Manage Users"
-                             rendered="#{authBean.currentMyUser.userType == 'ADMIN'}"
-                             action="manageUsers.xhtml?faces-redirect=true" />
         </p:menubar>
     </h:form>
     <h:panelGroup>
