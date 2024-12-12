@@ -5,14 +5,14 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="template.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form action="j_security_check">
             <h:panelGrid columns="2">
                 <h:outputLabel value="Username" />
-                <h:inputText value="#{authBean.username}" />
+                <h:inputText value="#{authBean.username}" name="j_username" />
                 <h:outputLabel value="Password" />
                 <h:inputSecret value="#{authBean.password}" />
             </h:panelGrid>
-            <p:commandButton value="Login" action="#{authBean.login}" />
+            <p:commandButton value="Login" action="#{authBean.login}" name="j_password" />
         </h:form>
     </ui:define>
 </ui:composition>

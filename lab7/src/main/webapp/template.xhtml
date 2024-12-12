@@ -14,23 +14,23 @@
             <p:menuitem value="Login" action="login.xhtml?faces-redirect=true" rendered="#{authBean.currentMyUser == null}" />
 
             <p:menuitem value="Register New User"
-                             rendered="#{authBean.currentMyUser.userType == 'ADMIN'}"
+                             rendered="#{authBean.hasPermission('admin')}"
                              action="register.xhtml?faces-redirect=true" />
 
             <p:menuitem value="Submit an Evaluation"
-                             rendered="#{authBean.currentMyUser.userType == 'STUDENT'}"
+                             rendered="#{authBean.hasPermission('student')}"
                              action="submitEvaluation.xhtml?faces-redirect=true" />
 
             <p:menuitem value="View My Evaluations"
-                             rendered="#{authBean.currentMyUser.userType == 'TEACHER' || authBean.currentMyUser.userType == 'STUDENT'}"
+                             rendered="#{authBean.hasPermission('teacher') || authBean.hasPermission('student')}"
                              action="viewEvaluations.xhtml?faces-redirect=true" />
 
             <p:menuitem value="View All Evaluations"
-                             rendered="#{authBean.currentMyUser.userType == 'ADMIN'}"
+                             rendered="#{authBean.hasPermission('admin')}"
                              action="viewEvaluations.xhtml?faces-redirect=true" />
 
             <p:menuitem value="Manage Activities"
-                             rendered="#{authBean.currentMyUser.userType == 'ADMIN' || authBean.currentMyUser.userType == 'TEACHER' }"
+                             rendered="#{authBean.hasPermission('admin') || authBean.hasPermission('teacher') }"
                              action="manageActivities.xhtml?faces-redirect=true" />
         </p:menubar>
     </h:form>

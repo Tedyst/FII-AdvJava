@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import ro.tedyst.lab7.model.MyUser;
+import ro.tedyst.lab7.model.UserGroup;
 
 @Named
 @RequestScoped
@@ -15,6 +16,8 @@ public class UserRegistrationBean {
     private MyUser newMyUser = new MyUser();
     private String password;
     private String confirmPassword;
+
+    private String userGroup;
 
     @PersistenceContext
     private EntityManager em;
@@ -30,10 +33,15 @@ public class UserRegistrationBean {
         // Hash password and set to new user
         newMyUser.setPassword(password);
 
+        UserGroup ug = new UserGroup();
+        ug.setName(userGroup);
+        ug.setUsername(newMyUser.getName());
+
         // Save user to the database
         try {
             em.persist(newMyUser);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User registered successfully!", null));
+            em.persist(ug);
             return null;
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error registering user: " + e, null));
@@ -64,5 +72,13 @@ public class UserRegistrationBean {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(String userGroup) {
+        this.userGroup = userGroup;
     }
 }

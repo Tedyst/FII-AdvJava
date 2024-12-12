@@ -68,9 +68,9 @@ public class SubmissionBean implements Serializable {
     }
 
     public List<Submission> getEvaluations() {
-        if (authBean.getCurrentMyUser().getUserType() == MyUser.UserType.ADMIN) {
+        if (authBean.hasPermission("admin")) {
             return em.createQuery("SELECT s from Submission s", Submission.class).getResultList();
-        } else if (authBean.getCurrentMyUser().getUserType() == MyUser.UserType.TEACHER) {
+        } else if (authBean.hasPermission("teacher")) {
             return em.createQuery("SELECT s from Submission s WHERE s.activity.teacher = :TEACHER", Submission.class).setParameter("TEACHER", authBean.getCurrentMyUser()).getResultList();
         } else {
             return em.createQuery("SELECT s FROM Submission s where s.myUser = :USER", Submission.class).setParameter("USER", authBean.getCurrentMyUser()).getResultList();

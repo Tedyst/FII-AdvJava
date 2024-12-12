@@ -10,7 +10,9 @@
 
         <!-- Display role-based actions -->
         <p:panelGrid columns="1" style="margin-top:20px;">
-          <p:outputLabel value="Your Role: #{authBean.currentMyUser.userType}" style="font-size:16px;" />
+          <p:outputLabel value="Admin: #{authBean.hasPermission('admin')}" style="font-size:16px;" />
+          <p:outputLabel value="Teacher: #{authBean.hasPermission('teacher')}" style="font-size:16px;" />
+          <p:outputLabel value="Student: #{authBean.hasPermission('student')}" style="font-size:16px;" />
         </p:panelGrid>
       </p:panel>
     </h:form>

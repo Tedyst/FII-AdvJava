@@ -19,6 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponseSchema;
 import ro.tedyst.lab7.beans.AuthBean;
 import ro.tedyst.lab7.beans.SubmissionBean;
 import ro.tedyst.lab7.model.Activity;
+import ro.tedyst.lab7.model.MyUser;
 import ro.tedyst.lab7.model.Submission;
 import ro.tedyst.lab7.objects.Authentication;
 import ro.tedyst.lab7.objects.CreateSubmission;

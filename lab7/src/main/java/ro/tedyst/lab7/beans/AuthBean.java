@@ -2,13 +2,21 @@ package ro.tedyst.lab7.beans;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.core.SecurityContext;
+import org.primefaces.component.password.Password;
 import ro.tedyst.lab7.model.MyUser;
+import ro.tedyst.lab7.model.UserGroup;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Named
 @SessionScoped
@@ -20,21 +28,46 @@ public class AuthBean implements Serializable {
     @PersistenceContext
     private EntityManager em;
 
+    @Inject
+    private HttpServletRequest request;
+
     public String login() {
-        MyUser myUser = em.createQuery("SELECT u from MyUser u WHERE u.name = :NAME", MyUser.class).setParameter("NAME", username).getSingleResult();
-        if (myUser != null && myUser.verifyPassword(password)) {
-            currentMyUser = myUser;
-            System.out.println("Logged in as " + username);
+        try {
+            request.login(username, password);
+            currentMyUser = em.find(MyUser.class, username);
             return "index.xhtml?faces-redirect=true";
+        } catch (ServletException | RuntimeException e) {
+            System.out.println(e.getMessage());
         }
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid credentials"));
-        return null;
+
+        return "login.xhtml?faces-redirect=true";
     }
 
     public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        currentMyUser = null;
+        try {
+            ExternalContext externalContext =
+                    FacesContext.getCurrentInstance().getExternalContext();
+            HttpServletRequest request = (HttpServletRequest)
+                    externalContext.getRequest();
+            request.logout();
+            externalContext.invalidateSession();
+            externalContext.log("Logout: " + username);
+        } catch (ServletException ex) {
+            System.err.println(ex.getMessage());
+        }
         return "login.xhtml?faces-redirect=true";
+    }
+
+    public boolean hasPermission(String group) {
+        List<UserGroup> groups = em.createQuery("SELECT ug FROM UserGroup ug WHERE ug.name = :USERNAME", UserGroup.class).setParameter("USERNAME", username).getResultList();
+
+        for (UserGroup ug : groups) {
+            if (ug.getName().equals(group)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // Getters and Setters

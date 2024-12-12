@@ -10,9 +10,9 @@ import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Provider
-@Priority(1)
-@Singleton
+//@Provider
+//@Priority(1)
+//@Singleton
 public class CacheFilter implements ContainerRequestFilter, ContainerResponseFilter {
 
     private final ConcurrentHashMap<String, Object> cache = new ConcurrentHashMap<>();

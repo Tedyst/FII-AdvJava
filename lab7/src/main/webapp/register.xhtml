@@ -20,11 +20,11 @@
                     <p:password id="confirmPassword" value="#{userRegistrationBean.confirmPassword}" required="true" label="Confirm Password" />
 
                     <p:outputLabel for="role" value="Role:" />
-                    <p:selectOneMenu id="role" value="#{userRegistrationBean.newMyUser.userType}" required="true" label="Role">
+                    <p:selectOneMenu id="role" value="#{userRegistrationBean.userGroup}" required="true" label="Role">
                         <f:selectItem itemLabel="Select Role" itemValue="" noSelectionOption="true" />
-                        <f:selectItem itemLabel="Student" itemValue="STUDENT" />
-                        <f:selectItem itemLabel="Teacher" itemValue="TEACHER" />
-                        <f:selectItem itemLabel="Admin" itemValue="ADMIN" />
+                        <f:selectItem itemLabel="Student" itemValue="student" />
+                        <f:selectItem itemLabel="Teacher" itemValue="teacher" />
+                        <f:selectItem itemLabel="Admin" itemValue="admin" />
                     </p:selectOneMenu>
                 </p:panelGrid>
 

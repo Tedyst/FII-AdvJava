@@ -54,15 +54,16 @@ public class ActivityBean implements Serializable {
 
     public List<Activity> getActivities() {
         if (authBean.getCurrentMyUser() == null) return null;
-        if (authBean.getCurrentMyUser().getUserType() == MyUser.UserType.ADMIN)
+        if (authBean.hasPermission("admin"))
             return em.createQuery("select a from Activity a", Activity.class).getResultList();
-        if(authBean.getCurrentMyUser().getUserType() == MyUser.UserType.TEACHER)
+        if(authBean.hasPermission("teacher"))
             return em.createQuery("select a from Activity a WHERE a.teacher = :TEACHER", Activity.class).setParameter("TEACHER", authBean.getCurrentMyUser()).getResultList();
         return null;
     }
 
     public List<MyUser> getTeachers() {
-        return em.createQuery("select u from MyUser u WHERE u.userType = :TYPE", MyUser.class).setParameter("TYPE", MyUser.UserType.TEACHER).getResultList();
+//        return em.createQuery("select u from MyUser u WHERE u.userType = :TYPE", MyUser.class).setParameter("TYPE", MyUser.UserType.TEACHER).getResultList();
+        return null;
     }
 
     public Activity getNewActivity() {

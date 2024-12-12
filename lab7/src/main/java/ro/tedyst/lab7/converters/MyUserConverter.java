@@ -22,8 +22,7 @@ public class MyUserConverter implements Converter<MyUser> {
             return null;
         }
         try {
-            long id = Long.parseLong(value);
-            MyUser m = em.find(MyUser.class, id);
+            MyUser m = em.find(MyUser.class, value);
             return m;
         } catch (NumberFormatException e) {
             return null;
@@ -35,7 +34,7 @@ public class MyUserConverter implements Converter<MyUser> {
         if (user == null) {
             return "";
         }
-        return String.valueOf(user.getId());
+        return String.valueOf(user.getName());
     }
 }
 
