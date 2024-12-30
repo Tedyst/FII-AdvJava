@@ -12,4 +12,6 @@ FROM amazoncorretto:11-alpine3.18
 
 COPY --from=0 /usr/src/app/target/lab10-microbundle.jar /usr/app/lab10-microbundle.jar
 
+EXPOSE 8080
+
 CMD ["java", "-jar", "/usr/app/lab10-microbundle.jar"]
