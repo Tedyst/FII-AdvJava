@@ -3,8 +3,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="hibernate.multiTenancy" value="DATABASE" />
-            <property name="hibernate.tenant_identifier_resolver" value="ro.tedyst.user.service.config.TenantIdentifierResolver" />
-            <property name="hibernate.multi_tenant_connection_provider" value="ro.tedyst.user.service.config.MapMultiTenantConnectionProvider" />
+            <property name="hibernate.tenant_identifier_resolver" value="ro.tedyst.userservice.config.TenantIdentifierResolver" />
+            <property name="hibernate.multi_tenant_connection_provider" value="ro.tedyst.userservice.config.MapMultiTenantConnectionProvider" />
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
